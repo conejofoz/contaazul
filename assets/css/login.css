@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/07/2017, 21:34:59
+    Author     : conejo
+*/
+
+body{
+    margin: 0;
+    background-color: #DDD;
+}
+
+
+.loginArea{
+    width: 270px;
+    height: 270px;
+    background-color: #FFF;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -150px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #999;
+    border: 1px solid #CCC;
+    padding: 15px;
+}
+
+
+
+.loginArea input[type=email],
+.loginArea input[type=password]{
+    width: 100%;
+    height: 40px;
+    outline: 0;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
+
+
+.loginArea input[type=submit]{
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #CCC;
+}
+
+
+
+.warning{
+    border: 2px solid #FF0000;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #FF9999;
+    color: #FFF;
+    margin-top: 20px;
+}
