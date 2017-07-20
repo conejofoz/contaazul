@@ -1,6 +1,7 @@
 <?php
 class Users extends Model{
     private $userInfo;
+    private $permissions;
 
 
 
@@ -41,6 +42,8 @@ class Users extends Model{
             $sql->execute();
             if($sql->rowCount() > 0){
                 $this->userInfo = $sql->fetch();
+                $this->permissions = new Permissions();
+                $this->permissions->setGroup($this->userInfo['group'], $this->userInfo['id_company']);
             }
         }
     }
@@ -51,6 +54,12 @@ class Users extends Model{
     }
     
     
+    public function hasPermission($name){
+        return $this->permissions->hasPermission($name);
+    }
+
+    
+
     public function getCompany(){
         if(isset($this->userInfo['id_company'])){
             return $this->userInfo['id_company'];
