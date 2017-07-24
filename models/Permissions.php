@@ -116,5 +116,16 @@ class Permissions extends Model {
             $sql->execute();
         }
     }
+    
+    
+    public function editGroup($name, $plist, $id, $id_company) {
+        $params = implode(',', $plist);
+        $sql = $this->db->prepare("UPDATE permission_groups SET name =:name, id_company = :id_company, params = :params WHERE id = :id");
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":id_company", $id_company);
+        $sql->bindValue(":params", $params);
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+    }
 
 }
