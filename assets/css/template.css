@@ -204,3 +204,13 @@ table td{
     height: 25px;
     line-height: 25px;
 }
+
+
+.warn{
+    padding: 15px;
+    background-color: #EEE;
+    border: 2px solid #CCC;
+    border-radius: 3xp;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
