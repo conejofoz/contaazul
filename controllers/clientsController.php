@@ -55,12 +55,13 @@ class clientsController extends controller {
                 $address = addslashes($_POST['address']);
                 $address_number = addslashes($_POST['address_number']);
                 $address2 = addslashes($_POST['address2']);
+                $address_neighb = addslashes($_POST['address_neighb']);
                 $address_city = addslashes($_POST['address_city']);
                 $address_state = addslashes($_POST['address_state']);
                 $address_country = addslashes($_POST['address_country']);
                 
                 $c->add($u->getCompany(), $name, $email, $phone, $stars, $internal_obs,
-                        $address_zipcode, $address, $address_number, $address2, $address_city,
+                        $address_zipcode, $address, $address_number, $address2, $address_neighb, $address_city,
                         $address_state, $address_country);
                 header("Location: " . BASE_URL."/clients");
             }

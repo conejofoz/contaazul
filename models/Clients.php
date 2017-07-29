@@ -13,41 +13,47 @@ class Clients extends Model{
     }
     
     
-    public function add($id_company, $name, $email, $phone, $stars, $internal_obs, $address_zipcode, $address, $address_number, $address2, $address_city, $address_state, $address_country){
+    public function add($id_company, $name, $email, $phone, $stars, $internal_obs, $address_zipcode, $address, $address_number, $address2, $address_neighb, $address_city, $address_state, $address_country){
         $sql = $this->db->prepare("INSERT INTO clients ("
                 . "id_company, "
                 . "name, "
                 . "email, "
+                . "phone, "
                 . "stars, "
                 . "internal_obs, "
                 . "address_zipcode, "
                 . "address, "
                 . "address_number, "
-                . "address2, "
+                . "address2,"
+                . "address_neighb, "
                 . "address_city, "
                 . "address_state, "
                 . "address_country) "
                 . "VALUES (:id_company, "
                 . ":name, "
                 . ":email, "
+                . ":phone, "
                 . ":stars, "
                 . ":internal_obs, "
                 . ":address_zipcode, "
                 . ":address, "
                 . ":address_number, "
-                . ":address2, "
+                . ":address2,"
+                . ":address_neighb, "
                 . ":address_city, "
                 . ":address_state, "
                 . ":address_country) ");
         $sql->bindValue(":id_company", $id_company);
         $sql->bindValue(":name", $name);
         $sql->bindValue(":email", $email);
+        $sql->bindValue(":phone", $phone);
         $sql->bindValue(":stars", $stars);
         $sql->bindValue(":internal_obs", $internal_obs);
         $sql->bindValue(":address_zipcode", $address_zipcode);
         $sql->bindValue(":address", $address);
         $sql->bindValue(":address_number", $address_number);
         $sql->bindValue(":address2", $address2);
+        $sql->bindValue(":address_neighb", $address_neighb);
         $sql->bindValue(":address_city", $address_city);
         $sql->bindValue(":address_state", $address_state);
         $sql->bindValue(":address_country", $address_country);
