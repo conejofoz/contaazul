@@ -2,6 +2,9 @@
 <?php if($edit_permition): ?>
 <a href="<?php echo BASE_URL; ?>/clients/add"><div class="button">Adicionar Clientes</div></a>
 <?php endif; ?>
+
+<input type="text" id="busca" data-type="search_clients" />
+
 <table border="0" width="100%">
     <tr>
         <th>Nome</th>
@@ -29,3 +32,14 @@
     <?php endforeach; ?>
     
 </table>
+
+
+
+<div class="pagination">
+<?php for($q=1; $q <= $p_count; $q++): ?>
+    <div class="pag_item <?php echo ($q==$p)?'pag_ativo':''; ?>">
+        <a href="<?php echo BASE_URL; ?>/clients?p=<?php echo $q; ?>"> <?php echo $q; ?> </a> 
+    </div>
+<?php endfor; ?>
+    <div style="clear:both"></div>
+</div>

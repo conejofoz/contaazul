@@ -12,6 +12,8 @@ class clientsController extends controller {
         }
     }
 
+    
+    
     public function index() {
         $data = array();
         $u = new Users();
@@ -23,7 +25,19 @@ class clientsController extends controller {
         if ($u->hasPermission('clients_view')) {
             $c = new Clients();
             $offset = 0;
+            $data['p'] = 1;
+            if(isset($_GET['p']) && !empty($_GET['p'])){
+                $data['p'] = intval($_GET['p']);
+                if($data['p'] == 0){
+                    $data['p'] = 1;
+                }
+            }
+            
+            $offset = ( 10 * ($data['p']-1));
+            
             $data['clients_list'] = $c->getList($offset, $u->getCompany());
+            $data['clients_count'] = $c->getCount($u->getCompany());
+            $data['p_count'] = ceil( $data['clients_count'] / 10 );
             $data['edit_permition'] = $u->hasPermission('clients_edit');
             $this->loadTemplate('clients', $data);
         } else {
@@ -111,6 +125,12 @@ class clientsController extends controller {
     
     public function delete($id){
         echo "falta fazer este método";
+    }
+    
+    
+    public function replica(){
+       // $c = new Clients();
+       // $c->replica();
     }
 
 }

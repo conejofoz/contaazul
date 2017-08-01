@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/font-awesome/css/font-awesome.min.css">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">var BASE_URL = '<?php echo BASE_URL; ?>';</script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script.js"></script>
         
     </head>
