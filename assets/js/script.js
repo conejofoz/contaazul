@@ -22,10 +22,15 @@ $(function () {
                 width: '100px'
             }, 'fast');
         }
+        setTimeout(function(){
+            $('.searchresults').hide();
+        }, 500);
+        
     });
     
     
     $('#busca').on('keyup', function(){
+        
         var datatype = $(this).attr('data-type');
         var q = $(this).val();
         
@@ -33,11 +38,24 @@ $(function () {
             $.ajax({
                 url:BASE_URL+'/ajax/'+datatype,
                 type:'GET',
-                data:{q:q},
+                data:{qz:q}, //estava dando conflito com o q do htaccess por isso mudei para qz
                 dataType:'json',
                 success:function(json){
+                    if( $('.searchresults').length == 0 ){
+                       $('#busca').after('<div class="searchresults"></div>'); 
+                    }
+                    $('.searchresults').css('left', $('#busca').offset().left+'px');
+                    $('.searchresults').css('top', $('#busca').offset().top+$('#busca').height()+3+'px');
                     
-                }
+                    var html = '';
+                    
+                    for(var i in json){
+                        html += '<div class="si"><a href="'+json[i].link+'">'+json[i].name+'</a></div>';
+                    }
+                    
+                    $('.searchresults').html(html);
+                    $('.searchresults').show();
+                } 
             });
         }
         

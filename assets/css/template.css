@@ -264,3 +264,29 @@ table td{
     border:1px solid #CCC;
     
 }
+
+
+.searchresults{
+    width: 250px;
+    background-color: #FFF;
+    position: absolute;
+    border: 1px solid #000;
+}
+
+
+.si{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.si a{
+    color: #000;
+    text-decoration: none;
+    display: block; /*faz que pegue o link na linha toda*/
+}
+
+.si:hover{
+    background-color: #EEE;
+}
