@@ -66,6 +66,15 @@ class Users extends Model {
     }
     
     
+    public function getId() {
+        if (isset($this->userInfo['id'])) {
+            return $this->userInfo['id'];
+        } else {
+            return '';
+        }
+    }
+    
+    
     public function getInfo($id, $id_company){
         $array = array();
         $sql = $this->db->prepare("SELECT * FROM users WHERE id=:id AND id_company = :id_company");
