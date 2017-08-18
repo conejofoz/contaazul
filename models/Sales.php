@@ -23,6 +23,32 @@ class Sales extends Model{
     }
     
     
+    public function addSale($id_company, $id_client, $id_user, $total_price, $status){
+        $agora = date('Y-m-d');
+        $sql = $this->db->prepare("INSERT INTO sales("
+                . "id_company, "
+                . "id_client, "
+                . "id_user, "
+                . "date_sale, "
+                . "total_price, "
+                . "status) "
+                . "VALUES("
+                . ":id_company, "
+                . ":id_client, "
+                . ":id_user, "
+                . ":date_sale, "
+                . ":total_price, "
+                . ":status)");
+        $sql->bindvalue(":id_company",$id_company);
+        $sql->bindvalue(":id_client",$id_client);
+        $sql->bindvalue(":id_user",$id_user);
+        $sql->bindvalue(":date_sale", $agora);
+        $sql->bindvalue(":total_price",$total_price);
+        $sql->bindvalue(":status",$status);
+        $sql->execute();
+    }
+    
+    
 
 
 }

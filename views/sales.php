@@ -14,10 +14,10 @@
         <tr>
             <td><?php echo $sale_item['name'];?></td>
             <td><?php echo date('d/m/Y', strtotime($sale_item['date_sale']));?></td>
-            <td><?php echo $sale_item['status'];?></td>
+            <td><?php echo $statuses[$sale_item['status']];?></td>
             <td><?php echo number_format($sale_item['total_price'], 2, ',','.');?></td>
             <td width="160">
-                <?php if($edit_permission): ?>
+                <?php if($sales_view): ?>
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/edit/<?php echo $sale_item['id']; ?>">Editar</a></div>
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/delete/<?php echo $sale_item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                 <?php else: ?>

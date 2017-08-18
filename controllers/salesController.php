@@ -19,6 +19,11 @@ class salesController extends controller {
         $company = new Companies($u->getCompany());
         $data['company_name'] = $company->getName();
         $data['user_email'] = $u->getEmail();
+        $data['statuses'] = array(
+            '0'=>'Aguardando Pgto.',
+            '1'=>'Pago',
+            '2'=>'Cancelado'
+        );
 
         if ($u->hasPermission('sales_view')) {
             $s = new Sales();
@@ -39,9 +44,21 @@ class salesController extends controller {
         $company = new Companies($u->getCompany());
         $data['company_name'] = $company->getName();
         $data['user_email'] = $u->getEmail();
+        
 
         if ($u->hasPermission('sales_view')) {
             $s = new sales();
+            
+            if(isset($_POST['client_id']) && !empty($_POST['client_id'])){
+                $client_id = addslashes($_POST['client_id']);
+                $status = addslashes($_POST['status']);
+                $total_price = addslashes($_POST['total_price']);
+                $total_price = str_replace('.', '', $total_price);
+                $total_price = str_replace(',', '.', $total_price);
+                
+                $s->addSale($u->getCompany(), $client_id, $u->getId(), $total_price, $status);
+                header("Location: " . BASE_URL."/sales");
+            }
 
 
 

@@ -13,7 +13,7 @@ class Clients extends Model {
         return $array;
     }
 
-    public function add($id_company, $name, $email, $phone, $stars, $internal_obs, $address_zipcode, $address, $address_number, $address2, $address_neighb, $address_city, $address_state, $address_country) {
+    public function add($id_company, $name, $email = '', $phone = '', $stars = '3', $internal_obs = '', $address_zipcode = '', $address = '', $address_number = '', $address2 = '', $address_neighb = '', $address_city = '', $address_state = '', $address_country = '') {
         $sql = $this->db->prepare("INSERT INTO clients ("
                 . "id_company, "
                 . "name, "
@@ -58,6 +58,8 @@ class Clients extends Model {
         $sql->bindValue(":address_state", $address_state);
         $sql->bindValue(":address_country", $address_country);
         $sql->execute();
+        
+        return $this->db->lastInsertId();
     }
 
     public function edit($id, $id_company, $name, $email, $phone, $stars, $internal_obs, $address_zipcode, $address, $address_number, $address2, $address_neighb, $address_city, $address_state, $address_country) {
