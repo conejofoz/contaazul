@@ -31,6 +31,7 @@
             <th>Quantidade</th>
             <th>Preço Unit.</th>
             <th>Sub-Total</th>
+            <th>Exluir</th>
         </tr>
     </table>
 
