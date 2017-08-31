@@ -30,6 +30,8 @@ class salesController extends controller {
             $offset = 0;
 
             $data['sales_list'] = $s->getList($offset, $u->getCompany());
+            
+            $data['sales_edit'] = $u->hasPermission('sales_edit');
 
             $this->loadTemplate("sales", $data);
         } else {

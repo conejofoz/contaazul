@@ -17,7 +17,7 @@
             <td><?php echo $statuses[$sale_item['status']];?></td>
             <td><?php echo number_format($sale_item['total_price'], 2, ',','.');?></td>
             <td width="160">
-                <?php if($sales_view): ?>
+                <?php if($sales_edit): ?>
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/edit/<?php echo $sale_item['id']; ?>">Editar</a></div>
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/delete/<?php echo $sale_item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                 <?php else: ?>
