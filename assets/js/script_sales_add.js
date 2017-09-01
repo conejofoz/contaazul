@@ -8,18 +8,32 @@ function selectClient(obj) {
 }
 
 
+function updateSubtotal(obj) {
+    var quant = $(obj).val();
+    if (quant <= 0) {
+        $(obj).val(1);
+        quant = 1;
+    }
+    var price = $(obj).attr('data-price');
+    var subtotal = price * quant;
+    
+    $(obj).closest('tr').find('.subtotal').html('R$' + subtotal);
 
-function addProd(obj){
+}
+
+
+
+function addProd(obj) {
     var id = $(obj).attr('data-id');
     var name = $(obj).attr('data-name');
     var price = $(obj).attr('data-price');
-    var tr = 
-            '<tr>'+
-                '<td>'+name+'</td>'+
-                '<td></td>'+
-                '<td>'+price+'</td>'+
-                '<td></td>'+
-                '<td><a href="javascript:;" onclick="">Excluir</a></td>'+
+    var tr =
+            '<tr>' +
+            '<td>' + name + '</td>' +
+            '<td><input type="number" name="quant[]" class="p_quant" value="1" onchange="updateSubtotal(this)" data-price="' + price + '" /></td>' +
+            '<td>' + price + '</td>' +
+            '<td class="subtotal">' + price + '</td>' +
+            '<td><a href="javascript:;" onclick="">Excluir</a></td>' +
             '</tr>';
     $('.searchresults').hide();
     $('#products_table').append(tr); //jogo da velha patiei
@@ -110,7 +124,7 @@ $(function () {
                     var html = '';
 
                     for (var i in json) {
-                        html += '<div class="si"><a href="javascript:;" onclick="addProd(this)" data-id="' + json[i].id + '" data-price="'+json[i].price+'" data-name="'+json[i].name+'">' + json[i].name + ' - R$ '+json[i].price+'</a></div>';
+                        html += '<div class="si"><a href="javascript:;" onclick="addProd(this)" data-id="' + json[i].id + '" data-price="' + json[i].price + '" data-name="' + json[i].name + '">' + json[i].name + ' - R$ ' + json[i].price + '</a></div>';
                     }
 
                     $('.searchresults').html(html);
