@@ -16,27 +16,38 @@ function updateSubtotal(obj) {
     }
     var price = $(obj).attr('data-price');
     var subtotal = price * quant;
-    
+
     $(obj).closest('tr').find('.subtotal').html('R$' + subtotal);
 
 }
 
 
 
+function excluirProd(obj) {
+    $(obj).closest('tr').remove();
+}
+
+
+
 function addProd(obj) {
+    $('#add_prod').val('');
     var id = $(obj).attr('data-id');
     var name = $(obj).attr('data-name');
     var price = $(obj).attr('data-price');
-    var tr =
-            '<tr>' +
-            '<td>' + name + '</td>' +
-            '<td><input type="number" name="quant[]" class="p_quant" value="1" onchange="updateSubtotal(this)" data-price="' + price + '" /></td>' +
-            '<td>' + price + '</td>' +
-            '<td class="subtotal">' + price + '</td>' +
-            '<td><a href="javascript:;" onclick="">Excluir</a></td>' +
-            '</tr>';
     $('.searchresults').hide();
-    $('#products_table').append(tr); //jogo da velha patiei
+    if ($('input[name="quant[' + id + ']"]').length == 0) {
+        var tr =
+                '<tr>' +
+                '<td>' + name + '</td>' +
+                '<td><input type="number" name="quant[' + id + ']" class="p_quant" value="1" onchange="updateSubtotal(this)" data-price="' + price + '" /></td>' +
+                '<td>' + price + '</td>' +
+                '<td class="subtotal">' + price + '</td>' +
+                '<td><a href="javascript:;" onclick="excluirProd(this)">Excluir</a></td>' +
+                '</tr>';
+        
+        $('#products_table').append(tr); //jogo da velha patiei
+
+    }
 }
 
 
