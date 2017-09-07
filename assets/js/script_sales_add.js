@@ -18,13 +18,29 @@ function updateSubtotal(obj) {
     var subtotal = price * quant;
 
     $(obj).closest('tr').find('.subtotal').html('R$' + subtotal);
+    
+    updateTotal();
 
+}
+
+
+function updateTotal(){
+    var total = 0;
+    
+    for(var q=0;q<$('.p_quant').length;q++){
+        var quant = $('.p_quant').eq(q);
+        var price = quant.attr('data-price');
+        var subtotal = price * parseInt(quant.val());
+        total += subtotal;
+    }
+    $('input[name=total_price]').val(total);
 }
 
 
 
 function excluirProd(obj) {
     $(obj).closest('tr').remove();
+    updateTotal();
 }
 
 
@@ -46,8 +62,9 @@ function addProd(obj) {
                 '</tr>';
         
         $('#products_table').append(tr); //jogo da velha patiei
-
     }
+    
+    updateTotal();
 }
 
 
