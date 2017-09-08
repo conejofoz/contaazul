@@ -54,11 +54,14 @@ class salesController extends controller {
             if(isset($_POST['client_id']) && !empty($_POST['client_id'])){
                 $client_id = addslashes($_POST['client_id']);
                 $status = addslashes($_POST['status']);
-                $total_price = addslashes($_POST['total_price']);
-                $total_price = str_replace('.', '', $total_price);
-                $total_price = str_replace(',', '.', $total_price);
+                $quant = $_POST['quant']; //recebimento dos produtos
                 
-                $s->addSale($u->getCompany(), $client_id, $u->getId(), $total_price, $status);
+                
+                //$total_price = addslashes($_POST['total_price']);
+               // $total_price = str_replace('.', '', $total_price);
+                //$total_price = str_replace(',', '.', $total_price);
+                
+                $s->addSale($u->getCompany(), $client_id, $u->getId(), $quant, $status); //qaunt são os produtos
                 header("Location: " . BASE_URL."/sales");
             }
 
