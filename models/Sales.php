@@ -24,7 +24,7 @@ class Sales extends Model{
     
     
     public function addSale($id_company, $id_client, $id_user, $quant, $status){
-        
+        $i = new Inventory();
         
         $agora = date('Y-m-d');
         $sql = $this->db->prepare("INSERT INTO sales("
@@ -71,14 +71,19 @@ class Sales extends Model{
                         . "VALUES("
                         . ":id_company, "
                         . ":id_sale, "
-                        . "id_product, "
-                        . "quant, "
-                        . "sale_price)");
+                        . ":id_product, "
+                        . ":quant, "
+                        . ":sale_price)");
                 $sqlp->bindValue(":id_company", $id_company);
                 $sqlp->bindValue(":id_sale", $id_sale);
                 $sqlp->bindValue(":id_product", $id_prod);
                 $sqlp->bindValue(":quant", $quant_prod);
                 $sqlp->bindValue(":sale_price", $price);
+                //var_dump($sqlp);
+               // exit();
+                $sqlp->execute();
+                
+                $i->decrease($id_prod, $id_company, $quant_prod, $id_user);
                 
                 $total_price += $price + $quant_prod;
             }
