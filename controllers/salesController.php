@@ -73,6 +73,11 @@ class salesController extends controller {
         $company = new Companies($u->getCompany());
         $data['company_name'] = $company->getName();
         $data['user_email'] = $u->getEmail();
+        $data['statuses'] = array(
+            '0'=>'Aguardando Pgto.',
+            '1'=>'Pago',
+            '2'=>'Cancelado',
+        );
 
         if ($u->hasPermission('sales_view')) {
             $s = new sales();
@@ -87,6 +92,7 @@ class salesController extends controller {
             }
             
             $data['sales_info'] = $s->getInfo($id, $u->getCompany());
+            $data['permission_edit'] = $u->hasPermission('sales_edit');
             
             $this->loadTemplate("sales_edit", $data);
         } else {
