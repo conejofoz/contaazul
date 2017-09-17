@@ -21,7 +21,7 @@
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/edit/<?php echo $sale_item['id']; ?>">Editar</a></div>
                 <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/delete/<?php echo $sale_item['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a></div>
                 <?php else: ?>
-                <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/view/<?php echo $sale_item['id']; ?>">Visualizar</a></div>
+                <div class="button button_small"><a href="<?php echo BASE_URL; ?>/sales/edit/<?php echo $sale_item['id']; ?>">Visualizar</a></div>
                 
                 <?php endif; ?>
             </td>

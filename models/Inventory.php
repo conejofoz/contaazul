@@ -17,7 +17,7 @@ class Inventory extends Model {
                 . ":action, "
                 . ":date_action) ");
         $sql->bindValue(":id_company", $id_company);
-        $sql->bindValue(":id_product", $id);
+        $sql->bindValue(":id_product", $id_product);
         $sql->bindValue(":id_user", $id_user);
         $sql->bindValue(":action", $action);
         $sql->bindValue(":date_action", $agora);
