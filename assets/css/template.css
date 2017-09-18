@@ -313,3 +313,29 @@ table td{
 .p_quant{
     width: 50px !important;
 }
+
+.report_item{
+    width: 150px;
+    height: 140px;
+    background-color: #CCC;
+    float: left;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.report_item a{
+    display: block;
+    color: #000;
+    text-decoration: none;
+    
+}
+
+
+.report-grid-4{
+    width: 25px;
+    height: 150px;
+    float: left;
+    text-align: center;
+}
