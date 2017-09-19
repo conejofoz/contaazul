@@ -1,5 +1,5 @@
 <h1>Relatórios de Vendas</h1>
-<form method="GET">
+<form method="GET" onsubmit="return openPopup(this)">
     <div class="report-grid-4">
         Nome do Cliente:<br/>
         <input type="text" name="client_name" />
@@ -23,6 +23,20 @@
         </select>
     </div>
     
-    <div class="report-grid-4">4</div>
+    <div class="report-grid-4">
+        Ordenação:<br/>
+        <select name="order">
+            <option value="data_desc">Mais Recente</option>
+            <option value="data_asc">Mais Antigo</option>
+            <option value="status">Status da venda</option>
+        </select>
+    </div>
+    
+    <div style="clear: both"></div>
+    <div style="text-align: center" >
+    <input type="submit" value="Gerar Relatório" />
+    </div>
 
 </form>
+
+<script type="text/javascript" src="<?php echo BASE_URL;?>/assets/js/report_sales.js"></script>

@@ -49,4 +49,34 @@ class reportController extends controller {
         }
     }
     
+    
+    
+    public function sales_pdf(){
+        $data = array();
+        $u = new Users();
+        $u->setLoggedUser();
+        
+        $data['statuses'] = array(
+            '0'=>'Aguardando Pgto.',
+            '1'=>'Pago',
+            '2'=>'Cancelado'
+        );
+
+        if ($u->hasPermission('report_view')) {
+            $client_name = addslashes($_GET['client_name']);
+            $period1 = addslashes($_GET['period1']);
+            $period2 = addslashes($_GET['period2']);
+            $status = addslashes($_GET['status']);
+            $order = addslashes($_GET['order']);
+            
+            $s = new Sales();
+            $data['sales_list'] = $s->getSalesFiltered($client_name, $period1, $period2, $status, $order, $u->getCompany());
+            $data['filters'] = $_GET;
+
+            $this->loadView("report_sales_pdf", $data);
+        } else {
+            header("Location: " . BASE_URL);
+        }
+    }
+    
 }
