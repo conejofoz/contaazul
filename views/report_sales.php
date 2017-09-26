@@ -26,8 +26,8 @@
     <div class="report-grid-4">
         Ordenação:<br/>
         <select name="order">
-            <option value="data_desc">Mais Recente</option>
-            <option value="data_asc">Mais Antigo</option>
+            <option value="date_desc">Mais Recente</option>
+            <option value="date_asc">Mais Antigo</option>
             <option value="status">Status da venda</option>
         </select>
     </div>
